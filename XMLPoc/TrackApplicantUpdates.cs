@@ -14,6 +14,9 @@ namespace XMLPoc
 
         private static int propetyLevelCounter = -1000;
         private static string? prevIndivid = null;
+        public static int itemId = 0;
+        private static string? prevParentClassWithSectionIdentifier = null;
+        private static string? prevSectionIdentifier = null;
         public static List<ObjectField> GetPropertyValues(object obj, string parentClass = "")
         {
             List<ObjectField> propList = new List<ObjectField>();
@@ -53,22 +56,50 @@ namespace XMLPoc
             }
             //Populate the identifierId from the parentClass object.
             string identifierName = string.Empty;
-            int identifierId = -1;
+            string identifierId = string.Empty;
+            string sectionIdentifier = string.Empty;
             if (aPClassIdentiers.Any(x => x.ParentClass == parentClass))
             {
-                identifierName = aPClassIdentiers.FirstOrDefault(x => x.ParentClass == parentClass).IdentifierName;
+                var aPClassIdentierObj = aPClassIdentiers.FirstOrDefault(x => x.ParentClass == parentClass);
+                identifierName = aPClassIdentierObj.IdentifierName;
+
                 if (propertiesOfobj.Any(x => x.Name == identifierName))
                 {
                     var identifierObj = propertiesOfobj.FirstOrDefault(x => x.Name == identifierName);
-                    var identifierVal = identifierObj.GetValue(obj, null);
-                    if (identifierVal != null && identifierVal.GetType().IsValueType)
+                    identifierId = identifierObj.GetValue(obj, null)?.ToString();
+                }
+                var miscIdentifier = aPClassIdentierObj.MiscIdentifier;
+                if (!string.IsNullOrEmpty(miscIdentifier))
+                {
+                    List<string> miscIdentifierList = miscIdentifier.Split(',').ToList();
+                    if (miscIdentifierList != null && miscIdentifierList.Any())
                     {
-                        identifierId = Convert.ToInt32(identifierVal);
+                        foreach (var miscField in miscIdentifierList)
+                        {
+                            if (propertiesOfobj.Any(x => x.Name == miscField))
+                            {
+                                var identifierObj = propertiesOfobj.FirstOrDefault(x => x.Name == miscField);
+                                var val = identifierObj.GetValue(obj, null)?.ToString();
+                                
+                                //SDEB have to get details from RT/FieldName to make the display value.
+                                sectionIdentifier = sectionIdentifier + (string.IsNullOrEmpty(sectionIdentifier) ? "": ", ") + miscField + "-" + val;
+                            }
+                        }
+                        if (!string.IsNullOrEmpty(sectionIdentifier))
+                        {
+                            prevParentClassWithSectionIdentifier = parentClass;
+                            prevSectionIdentifier = sectionIdentifier;
+                        }
                     }
                 }
             }
+            if (string.IsNullOrEmpty(sectionIdentifier) && !string.IsNullOrEmpty(prevSectionIdentifier)
+                && !string.IsNullOrEmpty(prevParentClassWithSectionIdentifier) && parentClass.Contains(prevParentClassWithSectionIdentifier))
+            {
+                sectionIdentifier = prevSectionIdentifier;
+            }
 
-            if (propetyLevelCounter == -1011)
+            if (identifierName == "EmploymentDetaild")
             {
                 var test = "debug";
             }
@@ -79,6 +110,7 @@ namespace XMLPoc
 
             foreach (PropertyInfo pinfo in propertiesOfobj)
             {
+
                 var value = pinfo.GetValue(obj, null);
 
 
@@ -87,7 +119,7 @@ namespace XMLPoc
                 {
                     continue;
                 }
-
+                itemId++;
 
                 if (pinfo.PropertyType.IsArray)
                 {
@@ -111,7 +143,9 @@ namespace XMLPoc
                                     ArraryIndex = i,
                                     IndividualId = individualId,
                                     IdentifierName = identifierName,
-                                    IdentifierId = identifierId
+                                    IdentifierId = identifierId,
+                                    ItemId = itemId,
+                                    SectionIdentifier = sectionIdentifier,
                                 });
                             }
                             else if (value != null & pinfo.PropertyType.IsValueType)
@@ -127,7 +161,9 @@ namespace XMLPoc
                                     ArraryIndex = i,
                                     IndividualId = individualId,
                                     IdentifierName = identifierName,
-                                    IdentifierId = identifierId
+                                    IdentifierId = identifierId,
+                                    ItemId = itemId,
+                                    SectionIdentifier = sectionIdentifier,
                                 });
                             }
                             else if (arrayElement != null && arrayElement.GetType() == typeof(string))
@@ -143,7 +179,9 @@ namespace XMLPoc
                                     ArraryIndex = i,
                                     IndividualId = individualId,
                                     IdentifierName = identifierName,
-                                    IdentifierId = identifierId
+                                    IdentifierId = identifierId,
+                                    ItemId = itemId,
+                                    SectionIdentifier = sectionIdentifier,
                                 });
                             }
 
@@ -174,7 +212,9 @@ namespace XMLPoc
                             PropertyLevel = propetyLevelCounter,
                             IndividualId = individualId,
                             IdentifierName = identifierName,
-                            IdentifierId = identifierId
+                            IdentifierId = identifierId,
+                            ItemId = itemId,
+                            SectionIdentifier = sectionIdentifier,
                         });
                     }
                     else if (value != null & pinfo.PropertyType.IsValueType)
@@ -187,7 +227,9 @@ namespace XMLPoc
                             PropertyLevel = propetyLevelCounter,
                             IndividualId = individualId,
                             IdentifierName = identifierName,
-                            IdentifierId = identifierId
+                            IdentifierId = identifierId,
+                            ItemId = itemId,
+                            SectionIdentifier = sectionIdentifier,
                         });
                     }
                     else if (value != null && value.GetType().IsClass)
@@ -204,86 +246,215 @@ namespace XMLPoc
             }
             return propList;
         }
+        static Dictionary<string, string> dicIndivNameNew = new Dictionary<string, string>();
         public static List<ReportedFieldValues> GetChanges(List<ObjectField> originalXMLValues, List<ObjectField> newXMLValues)
         {
             List<ReportedFieldValues> variances = new List<ReportedFieldValues>();
+            var IndividualIdsNew = newXMLValues.Where(x => x.ParentClass == "ApplicationIndividual.Individual").Select(x => x.IndividualId).Distinct().ToList();
+            foreach (var indivId in IndividualIdsNew)
+            {
+                var indivProperties = newXMLValues.Where(x => x.ParentClass == "ApplicationIndividual.Individual" && x.IndividualId == indivId).ToList();
+                if (indivProperties != null && indivProperties.Any())
+                {
+                    var preferredfirstName = indivProperties.FirstOrDefault(x => x.Name == "PreferredFirstName")?.Value;
+                    var preferredSuffix = indivProperties.FirstOrDefault(x => x.Name == "PreferredSuffix")?.Value;
+                    var preferredLastName = indivProperties.FirstOrDefault(x => x.Name == "PreferredLastName")?.Value;
+                    var fullName = string.Join(" ", preferredfirstName, preferredSuffix, preferredLastName);
+                    if (!dicIndivNameNew.ContainsKey(indivId))
+                    {
+                        dicIndivNameNew.Add(indivId,fullName);
+                    }
+                }
+            }
 
 
-            //#1 ParentClass is blank. 
+
+            //### ParentClass is blank. 
             var caseLevelFieldsOrig = originalXMLValues.Where(x => string.IsNullOrEmpty(x.ParentClass)).ToList();
             var caseLevelFieldsNew = newXMLValues.Where(x => string.IsNullOrEmpty(x.ParentClass)).ToList();
+            List<int> comparedItemidsOrig = new List<int>();
+            List<int> comparedItemidsNew = new List<int>();
 
-
-            foreach (var obj1 in caseLevelFieldsOrig)
+            foreach (var objOrig in caseLevelFieldsOrig)
             {
-                foreach (var obj2 in caseLevelFieldsNew)
+                comparedItemidsOrig.Add(objOrig.ItemId);
+                foreach (var objNew in caseLevelFieldsNew)
                 {
-                    if (obj1.Name == obj2.Name && obj1.ParentClass == obj2.ParentClass
-                        && obj1.Value != obj2.Value)
+                    if (!comparedItemidsNew.Contains(objNew.ItemId))
                     {
-                        variances.Add(new ReportedFieldValues()
-                        {
-                            Field = obj1.Name,
-                            oldValues = obj1.Value,
-                            NewValue = obj2.Value,
-                            ParentClass = obj1.ParentClass,
-                        });
+                        comparedItemidsNew.Add(objNew.ItemId);
+                    }
+
+                    if (objOrig.Name == objNew.Name && objOrig.ParentClass == objNew.ParentClass
+                        && objOrig.Value != objNew.Value)
+                    {
+                        variances.Add(PopulateVarianceMixed(objOrig, objNew));
                     }
                 }
             }
 
 
-            //#2 Identifier is Individual
-            var individualLevelFieldsOrig = originalXMLValues.Where(x => x.IdentifierName == "IndividualId" && x.IndividualId != null).ToList();
-            var individualLevelFieldsNew = newXMLValues.Where(x => x.IdentifierName == "IndividualId" && x.IndividualId != null).ToList();
+            //### Identifier is Individual
+            var individualLevelFieldsOrig = originalXMLValues.Where(x => x.IdentifierName == "IndividualId"
+            && x.IndividualId != null && !comparedItemidsOrig.Contains(x.ItemId)).ToList();
+            var individualLevelFieldsNew = newXMLValues.Where(x => x.IdentifierName == "IndividualId"
+            && x.IndividualId != null && !comparedItemidsNew.Contains(x.ItemId)).ToList();
 
 
-            foreach (var obj1 in individualLevelFieldsOrig)
+            foreach (var objOrig in individualLevelFieldsOrig)
             {
-                foreach (var obj2 in individualLevelFieldsNew)
+                comparedItemidsOrig.Add(objOrig.ItemId);
+                foreach (var objNew in individualLevelFieldsNew)
                 {
-                    if (obj1.Name == obj2.Name && obj1.ParentClass == obj2.ParentClass
-                        && obj1.IndividualId == obj2.IndividualId 
-                        && obj1.Value != obj2.Value)
+                    if (!comparedItemidsNew.Contains(objNew.ItemId))
                     {
-                        variances.Add(new ReportedFieldValues()
-                        {
-                            Field = obj1.Name,
-                            oldValues = obj1.Value,
-                            NewValue = obj2.Value,
-                            ParentClass = obj1.ParentClass,
-                        });
+                        comparedItemidsNew.Add(objNew.ItemId);
+                    }
+                    if (objOrig.Name == objNew.Name && objOrig.ParentClass == objNew.ParentClass
+                        && objOrig.IndividualId == objNew.IndividualId
+                        && objOrig.Value != objNew.Value)
+                    {
+                        variances.Add(PopulateVarianceMixed(objOrig, objNew));
                     }
                 }
             }
 
+           
 
-
-            foreach (var obj1 in originalXMLValues)
+            //### For New Individual All changes should be displayed.
+            var newXMLIndividualId = newXMLValues.Where(x => originalXMLValues.All(y => y.IndividualId != x.IndividualId)).ToList();
+            foreach (var objNew in newXMLIndividualId)
             {
-                foreach (var obj2 in newXMLValues)
+                if (!comparedItemidsNew.Contains(objNew.ItemId))
                 {
-                    if (obj1.Name == obj2.Name && obj1.ParentClass == obj2.ParentClass
-                            && obj1.IndividualId == obj2.IndividualId
-                             && !string.IsNullOrEmpty(obj1.IdentifierName)
-                             && obj1.IdentifierName == obj2.IdentifierName)
+                    comparedItemidsNew.Add(objNew.ItemId);
+                }
+                if (!string.IsNullOrEmpty(objNew.Value))
+                {
+                    variances.Add(PopulateVarianceNew(objNew));
+                }
+            }
+            //var deletedXMLIndividualId = originalXMLValues.Where(x => newXMLValues.All(y => y.IndividualId != x.IndividualId)).ToList();
+            //foreach (var obj in newXMLIndividualId)
+            //{
+            //    variances.Add(new ReportedFieldValues()
+            //    {
+            //        Field = obj.Name,
+            //        oldValues = obj.Value,
+            //        NewValue = "NA",
+            //        ParentClass = obj.ParentClass,
+            //    });
+            //}
+
+
+          
+
+
+            //###. For All Non IndividualId Identifiers whose IdentifierId is not 0.
+            var nonIndivIdentifiersFieldsUpdatedOrig = originalXMLValues.Where(x =>
+            !string.IsNullOrEmpty(x.ParentClass) && !string.IsNullOrEmpty(x.IdentifierName) && x.IdentifierName != "IndividualId"
+            && x.IndividualId != null && !string.IsNullOrEmpty(x.IdentifierId) && x.IdentifierId != "0" && !comparedItemidsOrig.Contains(x.ItemId)).ToList();
+            var nonIndivIdentifiersFieldsUpdatedNew = newXMLValues.Where(x =>
+            !string.IsNullOrEmpty(x.ParentClass) && !string.IsNullOrEmpty(x.IdentifierName) && x.IdentifierName != "IndividualId"
+            && x.IndividualId != null && !string.IsNullOrEmpty(x.IdentifierId) && x.IdentifierId != "0" && !comparedItemidsNew.Contains(x.ItemId)).ToList();
+
+
+
+            foreach (var objOrig in nonIndivIdentifiersFieldsUpdatedOrig)
+            {
+                comparedItemidsOrig.Add(objOrig.ItemId);
+                foreach (var objNew in nonIndivIdentifiersFieldsUpdatedNew)
+                {
+                    if (!comparedItemidsNew.Contains(objNew.ItemId))
                     {
-                        if (obj1.Value != obj2.Value)
+                        comparedItemidsNew.Add(objNew.ItemId);
+                    }
+                    if (objOrig.Name == objNew.Name && objOrig.ParentClass == objNew.ParentClass
+                            && objOrig.IndividualId == objNew.IndividualId
+                             && !string.IsNullOrEmpty(objOrig.IdentifierName)
+                             && objOrig.IdentifierName == objNew.IdentifierName)
+                    {
+                        //If IdentifierId is same but value is different.
+                        if (objOrig.IdentifierId == objNew.IdentifierId && objOrig.Value != objNew.Value)
                         {
-                            variances.Add(new ReportedFieldValues()
-                            {
-                                Field = obj1.Name,
-                                oldValues = obj1.Value,
-                                NewValue = obj2.Value,
-                                ParentClass = obj1.ParentClass,
-                            });
+                            variances.Add(PopulateVarianceMixed(objOrig, objNew));
                         }
                     }
                 }
             }
+
+            //###. For All Non IndividualId Identifiers whose IdentifierId is 0.
+            var nonIndivIdentifiersFieldsAddedNew = newXMLValues.Where(x =>
+            !string.IsNullOrEmpty(x.ParentClass) && !string.IsNullOrEmpty(x.IdentifierName) && x.IdentifierName != "IndividualId"
+            && x.IndividualId != null && !string.IsNullOrEmpty(x.IdentifierId) && x.IdentifierId == "0"
+            && !string.IsNullOrEmpty(x.Value) && !comparedItemidsNew.Contains(x.ItemId)).ToList();
+            foreach (var objNew in nonIndivIdentifiersFieldsAddedNew)
+            {
+                if (!comparedItemidsNew.Contains(objNew.ItemId))
+                {
+                    comparedItemidsNew.Add(objNew.ItemId);
+                }
+                if (!string.IsNullOrEmpty(objNew.Value))
+                {
+                    variances.Add(PopulateVarianceNew(objNew));
+                }
+
+            }
+            //### Remaining Fields  not yet covered should be considered as new.
+            var newFieldsNotYetCovered = newXMLValues.Where(x => !comparedItemidsNew.Contains(x.ItemId));
+            foreach (var objNew in newFieldsNotYetCovered)
+            {
+                if (!comparedItemidsNew.Contains(objNew.ItemId))
+                {
+                    comparedItemidsNew.Add(objNew.ItemId);
+                }
+                if (!string.IsNullOrEmpty(objNew.Value))
+                {
+                    variances.Add(PopulateVarianceNew(objNew));
+                }
+            }
+
+
+
             return variances;
         }
+    
+        static ReportedFieldValues PopulateVarianceMixed(ObjectField objOrig, ObjectField objNew)
+        {
+            ReportedFieldValues rfb = new ReportedFieldValues()
+            {
+                Field = objOrig.Name,
+                oldValues = objOrig.Value,
+                NewValue = objNew.Value,
+                ParentClass = objNew.ParentClass,
+                SectionIdentifier = objNew.SectionIdentifier,
+            };
+            if (!string.IsNullOrEmpty(objNew.IndividualId) && dicIndivNameNew.ContainsKey(objNew.IndividualId))
+            {
+                rfb.Name = dicIndivNameNew[objNew.IndividualId];
+            }
+            return rfb;
+        }
+        static ReportedFieldValues PopulateVarianceNew(ObjectField objNew)
+        {
+            ReportedFieldValues rfb = new ReportedFieldValues()
+            {
+                Field = objNew.Name,
+                oldValues = "NA",
+                NewValue = objNew.Value,
+                ParentClass = objNew.ParentClass,
+                SectionIdentifier = objNew.SectionIdentifier,
+            };
+            if (!string.IsNullOrEmpty(objNew.IndividualId) && dicIndivNameNew.ContainsKey(objNew.IndividualId))
+            {
+                rfb.Name = dicIndivNameNew[objNew.IndividualId];
+            }
+            return rfb;
+        }
+
     }
+   
+
 
 
     public class ObjectField
@@ -291,6 +462,7 @@ namespace XMLPoc
         public string Name { get; set; }
         public string Value { get; set; }
         public string ParentClass { get; set; }
+        public int ItemId { get; set; }
 
         public int PropertyLevel { get; set; }
         public bool IsArray { get; set; }
@@ -298,7 +470,8 @@ namespace XMLPoc
         public int ArraryIndex { get; set; }
         public string IndividualId { get; set; }
         public string IdentifierName { get; set; }
-        public int IdentifierId { get; set; }
+        public string? IdentifierId { get; set; }
+        public string? SectionIdentifier { get; set; }
     }
 
     public class ReportedFieldValues
@@ -310,7 +483,7 @@ namespace XMLPoc
         public string NewValue { get; set; }
 
         public string ParentClass { get; set; }
-
+        public string? SectionIdentifier { get; set; }
     }
 
 }

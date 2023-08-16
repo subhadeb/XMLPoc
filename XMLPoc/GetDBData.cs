@@ -153,6 +153,7 @@ namespace XMLPoc
             APClassIdentier aPClassIdentier19 = new APClassIdentier();
             aPClassIdentier19.ParentClass = "ApplicationIndividual.Individual.Employer.EmploymentDetail";
             aPClassIdentier19.IdentifierName = "EmploymentDetaild";
+            aPClassIdentier19.MiscIdentifier = "IncomeCategoryCode,IncomeTypeCode,EmployerName";
             aPClassIdentiersList.Add(aPClassIdentier19);
 
             APClassIdentier aPClassIdentier20 = new APClassIdentier();
@@ -174,6 +175,7 @@ namespace XMLPoc
             APClassIdentier aPClassIdentier23 = new APClassIdentier();
             aPClassIdentier23.ParentClass = "ApplicationIndividual.Individual.UnearnedIncomeDetail";
             aPClassIdentier23.IdentifierName = "UnearnedIncomeDetailId";
+            aPClassIdentier23.MiscIdentifier = "UnearnedIncomeTypeCode,UnearnedIncomeStartDate";
             aPClassIdentiersList.Add(aPClassIdentier23);
 
             APClassIdentier aPClassIdentier24 = new APClassIdentier();
@@ -316,7 +318,7 @@ namespace XMLPoc
         public string ParentClass { get; set; }
         public string IdentifierName { get; set; }
 
-        public string IdentifierName2 { get; set; }
+        public string MiscIdentifier { get; set; }
     }
 
 }
