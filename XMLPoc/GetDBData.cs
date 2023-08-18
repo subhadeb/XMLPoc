@@ -189,6 +189,7 @@ namespace XMLPoc
             aPClassIdentiersList.Add(aPClassIdentier25);
 
             
+            
             APClassIdentier aPClassIdentier26 = new APClassIdentier();
             aPClassIdentier26.ParentClass = "ApplicationIndividual.IndividualEducation.EnrollmentSummary";
             aPClassIdentier26.IdentifierName = "EducationEnrollmentId";
@@ -274,9 +275,11 @@ namespace XMLPoc
             aPClassIdentiersList.Add(aPClassIdentier39);
 
 
+            //SDEB
             APClassIdentier aPClassIdentier40 = new APClassIdentier();
             aPClassIdentier40.ParentClass = "ApplicationIndividual.IndividualEducation";
             aPClassIdentier40.IdentifierName = "EducationId";
+            aPClassIdentier40.MiscIdentifier = "HighestEducationLevelCode";
             aPClassIdentiersList.Add(aPClassIdentier40);
 
 
@@ -297,6 +300,11 @@ namespace XMLPoc
             aPClassIdentier43.IdentifierName = "ExpenseDetailId";
             aPClassIdentiersList.Add(aPClassIdentier43);
 
+            //Not added in Day 0--SDEB
+            APClassIdentier aPClassIdentier44 = new APClassIdentier();
+            aPClassIdentier43.ParentClass = "ApplicationIndividual.Individual.IndividualProfile";
+            aPClassIdentier43.IdentifierName = "IndividualId";
+            aPClassIdentiersList.Add(aPClassIdentier43);
 
 
             return aPClassIdentiersList;

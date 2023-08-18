@@ -35,10 +35,8 @@ namespace XMLPoc
         public string GetApplicantUpdates()
         {
 
-            
-            var OlxXMLFileName = @"C:\SDEB_code\poc\SSPRequestSupriya3_Old.xml";
-            var NewXMLFileName = @"C:\SDEB_code\poc\SSPRequestSupriya4_New.xml";
-
+            var OlxXMLFileName = @"C:\SDEB_code\poc\SSPReqMarkingBlind1_Old.xml";
+            var NewXMLFileName = @"C:\SDEB_code\poc\SSPReqMarkingBlind2_New.xml";
 
 
             Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application app = new Application();

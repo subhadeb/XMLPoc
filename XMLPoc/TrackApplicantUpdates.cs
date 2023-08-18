@@ -54,6 +54,12 @@ namespace XMLPoc
                     prevIndivid = individualId;
                 }
             }
+
+            if (parentClass == "ApplicationIndividual.IndividualEducation.EnrollmentSummary")
+            {
+                var test = "debug";
+            }
+
             //Populate the identifierId from the parentClass object.
             string identifierName = string.Empty;
             string identifierId = string.Empty;
@@ -80,9 +86,9 @@ namespace XMLPoc
                             {
                                 var identifierObj = propertiesOfobj.FirstOrDefault(x => x.Name == miscField);
                                 var val = identifierObj.GetValue(obj, null)?.ToString();
-                                
+
                                 //SDEB have to get details from RT/FieldName to make the display value.
-                                sectionIdentifier = sectionIdentifier + (string.IsNullOrEmpty(sectionIdentifier) ? "": ", ") + miscField + "-" + val;
+                                sectionIdentifier = sectionIdentifier + (string.IsNullOrEmpty(sectionIdentifier) ? "" : ", ") + miscField + "-" + val;
                             }
                         }
                         if (!string.IsNullOrEmpty(sectionIdentifier))
@@ -256,13 +262,14 @@ namespace XMLPoc
                 var indivProperties = newXMLValues.Where(x => x.ParentClass == "ApplicationIndividual.Individual" && x.IndividualId == indivId).ToList();
                 if (indivProperties != null && indivProperties.Any())
                 {
+                    //Will call GetFormattedNameWithSuffix
                     var preferredfirstName = indivProperties.FirstOrDefault(x => x.Name == "PreferredFirstName")?.Value;
                     var preferredSuffix = indivProperties.FirstOrDefault(x => x.Name == "PreferredSuffix")?.Value;
                     var preferredLastName = indivProperties.FirstOrDefault(x => x.Name == "PreferredLastName")?.Value;
                     var fullName = string.Join(" ", preferredfirstName, preferredSuffix, preferredLastName);
                     if (!dicIndivNameNew.ContainsKey(indivId))
                     {
-                        dicIndivNameNew.Add(indivId,fullName);
+                        dicIndivNameNew.Add(indivId, fullName);
                     }
                 }
             }
@@ -293,6 +300,79 @@ namespace XMLPoc
                 }
             }
 
+            //### If Individual is Removed display as Removed and display Death Date if Any. Everything apart from this can be removed. 
+            var removedIndividuals = newXMLValues.Where(x => x.Name == "deleteIndicator"
+            && x.ParentClass == "ApplicationIndividual.Individual" && !string.IsNullOrEmpty(x.IndividualId))
+                .Select(x => x.IndividualId).ToList();
+
+            if (removedIndividuals != null && removedIndividuals.Any())
+            {
+                foreach (var indiv in removedIndividuals)
+                {
+                    var individualFields = newXMLValues.Where(x => x.ParentClass == "ApplicationIndividual.Individual"
+                    && x.IndividualId == indiv).ToList();
+                    var origIndivDetails = originalXMLValues.Where(x => x.ParentClass == "ApplicationIndividual.Individual" && x.IndividualId == indiv).ToList();
+
+                    var preferredfirstName = origIndivDetails.FirstOrDefault(x => x.Name == "PreferredFirstName")?.Value;
+                    var preferredSuffix = origIndivDetails.FirstOrDefault(x => x.Name == "PreferredSuffix")?.Value;
+                    var preferredLastName = origIndivDetails.FirstOrDefault(x => x.Name == "PreferredLastName")?.Value;
+                    var fullName = string.Join(" ", preferredfirstName, preferredSuffix, preferredLastName);
+
+                    ReportedFieldValues rfb = new ReportedFieldValues()
+                    {
+                        Field = "Individual",
+                        oldValues = "N/A",
+                        NewValue = "Removed",
+                        ParentClass = "ApplicationIndividual.Individual",
+                        SectionIdentifier = "",
+                        Name = fullName
+                    };
+                    variances.Add(rfb);
+                    //For Death Date:
+                    var origDeathDate = originalXMLValues.FirstOrDefault(x =>
+                      x.ParentClass == "ApplicationIndividual.Individual" && x.IndividualId == indiv
+                     && x.Name == "DeathDate");
+                    var newDeathDate = originalXMLValues.FirstOrDefault(x =>
+                     x.ParentClass == "ApplicationIndividual.Individual" && x.IndividualId == indiv
+                     && x.Name == "DeathDate");
+                    if ((origDeathDate == null || (origDeathDate != null && string.IsNullOrEmpty(origDeathDate.Value)))
+                        && (newDeathDate != null && !string.IsNullOrEmpty(newDeathDate.Value)))
+                    {
+                        variances.Add(PopulateVarianceNew(newDeathDate));
+                    }
+                    //No need of comparisons and displaying fields for removed individual
+                    originalXMLValues.RemoveAll(x => x.IndividualId == indiv);
+                    newXMLValues.RemoveAll(x => x.IndividualId == indiv);
+                }
+            }
+
+            var deletedItemsNew = newXMLValues.Where(x => x.Name == "deleteIndicator" && !string.IsNullOrEmpty(x.Value)
+            && x.Value.ToLower() == "true").ToList();
+            if (deletedItemsNew != null && deletedItemsNew.Any())
+            {
+                foreach (var objNew in deletedItemsNew)
+                {
+                    var parentClass = objNew.ParentClass;
+                    var identifierId = objNew.IdentifierId;
+                    ReportedFieldValues rfb = new ReportedFieldValues()
+                    {
+                        Field = objNew.SectionIdentifier,
+                        oldValues = "N/A",
+                        NewValue = "Deleted",
+                        ParentClass = objNew.ParentClass,
+                        SectionIdentifier = "",
+                    };
+                    if (!string.IsNullOrEmpty(objNew.IndividualId) && dicIndivNameNew.ContainsKey(objNew.IndividualId))
+                    {
+                        rfb.Name = dicIndivNameNew[objNew.IndividualId];
+                    }
+                    variances.Add(rfb);
+
+                    newXMLValues.RemoveAll(x => x.ParentClass == parentClass && x.IdentifierId == identifierId);
+                    originalXMLValues.RemoveAll(x => x.ParentClass == parentClass && x.IdentifierId == identifierId);
+                }
+            }
+
 
             //### Identifier is Individual
             var individualLevelFieldsOrig = originalXMLValues.Where(x => x.IdentifierName == "IndividualId"
@@ -319,7 +399,7 @@ namespace XMLPoc
                 }
             }
 
-           
+
 
             //### For New Individual All changes should be displayed.
             var newXMLIndividualId = newXMLValues.Where(x => originalXMLValues.All(y => y.IndividualId != x.IndividualId)).ToList();
@@ -347,7 +427,7 @@ namespace XMLPoc
             //}
 
 
-          
+
 
 
             //###. For All Non IndividualId Identifiers whose IdentifierId is not 0.
@@ -401,7 +481,7 @@ namespace XMLPoc
 
             }
             //### Remaining Fields  not yet covered should be considered as new.
-            var newFieldsNotYetCovered = newXMLValues.Where(x => !comparedItemidsNew.Contains(x.ItemId));
+            var newFieldsNotYetCovered = newXMLValues.Where(x => !comparedItemidsNew.Contains(x.ItemId)).ToList();
             foreach (var objNew in newFieldsNotYetCovered)
             {
                 if (!comparedItemidsNew.Contains(objNew.ItemId))
@@ -418,7 +498,7 @@ namespace XMLPoc
 
             return variances;
         }
-    
+
         static ReportedFieldValues PopulateVarianceMixed(ObjectField objOrig, ObjectField objNew)
         {
             ReportedFieldValues rfb = new ReportedFieldValues()
@@ -453,7 +533,7 @@ namespace XMLPoc
         }
 
     }
-   
+
 
 
 
