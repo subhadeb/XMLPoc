@@ -31,7 +31,10 @@ namespace XMLPoc
             {
                 var individualIdObj = propertiesOfobj.FirstOrDefault(x => x.Name == "IndividualId");
                 individualId = individualIdObj.GetValue(obj, null)?.ToString();
-                prevIndivid = individualId;
+                if (!string.IsNullOrEmpty(individualId))
+                {
+                    prevIndivid = individualId;
+                }
             }
             //Populate individualId for Nested Clasess, comparison for WP screen can be done based on IndividualId and Identifier Id combination.
             if (individualId == null && obj.GetType().Name != null && !string.IsNullOrEmpty(parentClass)
@@ -51,11 +54,18 @@ namespace XMLPoc
                 {
                     var individualIdObj = individualObj.GetType().GetProperties().FirstOrDefault(x => x.Name == "IndividualId");
                     individualId = individualIdObj.GetValue(individualObj, null)?.ToString();
-                    prevIndivid = individualId;
+                    if (!string.IsNullOrEmpty(individualId))
+                    {
+                        prevIndivid = individualId;
+                    }
                 }
             }
+            if (parentClass == "ApplicationIndividual.Resource.TrustDetails")
+            {
+                var test = "debug";
+            }
 
-            if (parentClass == "ApplicationIndividual.IndividualEducation.EnrollmentSummary")
+            if (parentClass == "ApplicationIndividual.Resource.TrustDetails.ResourceTrustIndividual")
             {
                 var test = "debug";
             }
@@ -69,11 +79,43 @@ namespace XMLPoc
                 var aPClassIdentierObj = aPClassIdentiers.FirstOrDefault(x => x.ParentClass == parentClass);
                 identifierName = aPClassIdentierObj.IdentifierName;
 
-                if (propertiesOfobj.Any(x => x.Name == identifierName))
+                if (!string.IsNullOrEmpty(identifierName) && !identifierName.ToUpper().StartsWith("CUSTOM_") && propertiesOfobj.Any(x => x.Name == identifierName))
                 {
+
                     var identifierObj = propertiesOfobj.FirstOrDefault(x => x.Name == identifierName);
                     identifierId = identifierObj.GetValue(obj, null)?.ToString();
+
                 }
+                else if (identifierName.ToUpper().StartsWith("CUSTOM_") && identifierName.ToUpper() == "CUSTOM_PARENTINDIDIVIDUALID"
+                        && !string.IsNullOrEmpty(individualId))
+                {
+                    identifierId = individualId;
+                }
+                else if (identifierName.ToUpper().StartsWith("CUSTOM_COMBINE{"))
+                {
+                    var arrIdentifierCustomCombine = identifierName.Split(new char[] { '{', '}' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (arrIdentifierCustomCombine != null && arrIdentifierCustomCombine.Length == 2 && !string.IsNullOrEmpty(arrIdentifierCustomCombine[1]))
+                    {
+                        var combineItems = arrIdentifierCustomCombine[1].Split(',').ToList();
+                        if (combineItems != null && combineItems.Any())
+                        {
+                            foreach (var field in combineItems)
+                            {
+                                if (propertiesOfobj.Any(x => x.Name == field))
+                                {
+                                    var identifierObj = propertiesOfobj.FirstOrDefault(x => x.Name == field);
+                                    var val = identifierObj.GetValue(obj, null)?.ToString();
+
+                                    //SDEB have to get details from RT/FieldName to make the display value.
+                                    identifierId = identifierId + (string.IsNullOrEmpty(identifierId) ? "" : ",") + val;
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+
                 var miscIdentifier = aPClassIdentierObj.MiscIdentifier;
                 if (!string.IsNullOrEmpty(miscIdentifier))
                 {
@@ -277,15 +319,15 @@ namespace XMLPoc
 
 
             //### ParentClass is blank. 
-            var caseLevelFieldsOrig = originalXMLValues.Where(x => string.IsNullOrEmpty(x.ParentClass)).ToList();
-            var caseLevelFieldsNew = newXMLValues.Where(x => string.IsNullOrEmpty(x.ParentClass)).ToList();
+            var caseLevelFieldsNoParentOrig = originalXMLValues.Where(x => string.IsNullOrEmpty(x.ParentClass)).ToList();
+            var caseLevelFieldsNoParentNew = newXMLValues.Where(x => string.IsNullOrEmpty(x.ParentClass)).ToList();
             List<int> comparedItemidsOrig = new List<int>();
             List<int> comparedItemidsNew = new List<int>();
 
-            foreach (var objOrig in caseLevelFieldsOrig)
+            foreach (var objOrig in caseLevelFieldsNoParentOrig)
             {
                 comparedItemidsOrig.Add(objOrig.ItemId);
-                foreach (var objNew in caseLevelFieldsNew)
+                foreach (var objNew in caseLevelFieldsNoParentNew)
                 {
                     if (!comparedItemidsNew.Contains(objNew.ItemId))
                     {
@@ -300,6 +342,32 @@ namespace XMLPoc
                 }
             }
 
+            //### ParentClass is not blank but IndividualId is blank. These will be case level data
+            var caseLevelFieldsWithParentOrig = originalXMLValues.Where(x => !string.IsNullOrEmpty(x.ParentClass)
+            && string.IsNullOrEmpty(x.IndividualId)).ToList();
+            var caseLevelFieldsWithParentNew = newXMLValues.Where(x => !string.IsNullOrEmpty(x.ParentClass)
+            && string.IsNullOrEmpty(x.IndividualId)).ToList();
+
+            foreach (var objOrig in caseLevelFieldsWithParentOrig)
+            {
+                comparedItemidsOrig.Add(objOrig.ItemId);
+                foreach (var objNew in caseLevelFieldsWithParentNew)
+                {
+                    if (!comparedItemidsNew.Contains(objNew.ItemId))
+                    {
+                        comparedItemidsNew.Add(objNew.ItemId);
+                    }
+
+                    if (objOrig.Name == objNew.Name && objOrig.ParentClass == objNew.ParentClass
+                        && objOrig.Value != objNew.Value)
+                    {
+                        variances.Add(PopulateVarianceMixed(objOrig, objNew));
+                    }
+                }
+            }
+
+
+
             //### If Individual is Removed display as Removed and display Death Date if Any. Everything apart from this can be removed. 
             var removedIndividuals = newXMLValues.Where(x => x.Name == "deleteIndicator"
             && x.ParentClass == "ApplicationIndividual.Individual" && !string.IsNullOrEmpty(x.IndividualId))
@@ -313,6 +381,7 @@ namespace XMLPoc
                     && x.IndividualId == indiv).ToList();
                     var origIndivDetails = originalXMLValues.Where(x => x.ParentClass == "ApplicationIndividual.Individual" && x.IndividualId == indiv).ToList();
 
+                    //Will call GetFormattedNameWithSuffix
                     var preferredfirstName = origIndivDetails.FirstOrDefault(x => x.Name == "PreferredFirstName")?.Value;
                     var preferredSuffix = origIndivDetails.FirstOrDefault(x => x.Name == "PreferredSuffix")?.Value;
                     var preferredLastName = origIndivDetails.FirstOrDefault(x => x.Name == "PreferredLastName")?.Value;

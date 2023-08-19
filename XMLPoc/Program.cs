@@ -13,14 +13,17 @@ namespace XMLPoc
         public static void Main(string[] args)
         {
             Console.WriteLine("Test!");
-         
+
+           
             //SerializeDemo();
             Program p = new Program();
             //p.POC();
             p.GetApplicantUpdates();
 
+
             
-            
+
+
             //POCStackOverflow21091452.Invoke();
 
         }
