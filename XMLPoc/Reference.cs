@@ -5,7 +5,7 @@ using System.ServiceModel;
 using System.ComponentModel;
 using System.Diagnostics;
 
-namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
+namespace Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient
 {
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -89,15 +89,15 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationBusinessExceptionTypeFault", Name = "BusinessExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationEDBCExceptionTypeFault", Name = "EDBCExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationFileClearenceExceptionTypeFault", Name = "FileClearenceExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -115,25 +115,64 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationResponseSubmitApplicationResult submitApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationResponseSubmitApplicationResult submitApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationResponseSubmitApplicationResult> submitApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationResponseSubmitApplicationResult> submitApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application);
+
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+            "itApplicationForPrepopulatedData", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+            "itApplicationForPrepopulatedDataResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+            "itApplicationForPrepopulatedDataBusinessExceptionTypeFault", Name = "BusinessExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+            "itApplicationForPrepopulatedDataEDBCExceptionTypeFault", Name = "EDBCExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+            "itApplicationForPrepopulatedDataFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+            "itApplicationForPrepopulatedDataFileClearenceExceptionTypeFault", Name = "FileClearenceExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+            "itApplicationForPrepopulatedDataDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FileClearenceExceptionType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FatalExceptionType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(EDBCExceptionType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(BusinessExceptionType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo1))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(AdditionalApplicationDetails))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(HouseholdCompositionReturnModel))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(IndividualRelationships))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskResponseModel))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskModel))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DCAgencyIndividualCaseAssociation))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationForPrepopulatedDataResponseSubmitApplicationForPrepopulatedDataResult submitApplicationForPrepopulatedData(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+            "itApplicationForPrepopulatedData", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+            "itApplicationForPrepopulatedDataResponse")]
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationForPrepopulatedDataResponseSubmitApplicationForPrepopulatedDataResult> submitApplicationForPrepopulatedDataAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application);
+
+
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itSNAPShortApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itSNAPShortApplicationResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itSNAPShortApplicationFileClearenceExceptionTypeFault", Name = "FileClearenceExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itSNAPShortApplicationDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itSNAPShortApplicationBusinessExceptionTypeFault", Name = "BusinessExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itSNAPShortApplicationEDBCExceptionTypeFault", Name = "EDBCExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itSNAPShortApplicationFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -151,25 +190,25 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitSNAPShortApplicationResponseSubmitSNAPShortApplicationResult submitSNAPShortApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitSNAPShortApplicationResponseSubmitSNAPShortApplicationResult submitSNAPShortApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itSNAPShortApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itSNAPShortApplicationResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitSNAPShortApplicationResponseSubmitSNAPShortApplicationResult> submitSNAPShortApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitSNAPShortApplicationResponseSubmitSNAPShortApplicationResult> submitSNAPShortApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itDisasterSNAPApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itDisasterSNAPApplicationResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itDisasterSNAPApplicationDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itDisasterSNAPApplicationFileClearenceExceptionTypeFault", Name = "FileClearenceExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itDisasterSNAPApplicationBusinessExceptionTypeFault", Name = "BusinessExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itDisasterSNAPApplicationEDBCExceptionTypeFault", Name = "EDBCExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itDisasterSNAPApplicationFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -187,12 +226,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitDisasterSNAPApplicationResponseSubmitDisasterSNAPApplicationResult submitDisasterSNAPApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitDisasterSNAPApplicationResponseSubmitDisasterSNAPApplicationResult submitDisasterSNAPApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itDisasterSNAPApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itDisasterSNAPApplicationResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitDisasterSNAPApplicationResponseSubmitDisasterSNAPApplicationResult> submitDisasterSNAPApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitDisasterSNAPApplicationResponseSubmitDisasterSNAPApplicationResult> submitDisasterSNAPApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application);
 
         // CODEGEN: Parameter 'applicationNumber' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/ReRu" +
@@ -213,17 +252,17 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationResponse ReRunApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationRequest request);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationResponse ReRunApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationRequest request);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/ReRu" +
             "nApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/ReRu" +
             "nApplicationResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationResponse> ReRunApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationRequest request);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationResponse> ReRunApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationRequest request);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/remo" +
             "valOfMAAssisstance", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/remo" +
             "valOfMAAssisstanceResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/remo" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/remo" +
             "valOfMAAssisstanceFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -251,15 +290,15 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPE", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPEResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPEFileClearenceExceptionTypeFault", Name = "FileClearenceExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPEEDBCExceptionTypeFault", Name = "EDBCExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPEBusinessExceptionTypeFault", Name = "BusinessExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPEFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPEDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -277,17 +316,17 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPEResponseSubmitPEResult SubmitPE(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPEApplication Application);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPEResponseSubmitPEResult SubmitPE(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPEApplication Application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPE", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPEResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPEResponseSubmitPEResult> SubmitPEAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPEApplication Application);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPEResponseSubmitPEResult> SubmitPEAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPEApplication Application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itAdditionalApplicationDetails", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itAdditionalApplicationDetailsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itAdditionalApplicationDetailsFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -305,25 +344,25 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitAdditionalApplicationDetailsResponseSubmitAdditionalApplicationDetailsResult SubmitAdditionalApplicationDetails(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.AdditionalApplicationDetails additionalApplicationDetails);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitAdditionalApplicationDetailsResponseSubmitAdditionalApplicationDetailsResult SubmitAdditionalApplicationDetails(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.AdditionalApplicationDetails additionalApplicationDetails);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itAdditionalApplicationDetails", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itAdditionalApplicationDetailsResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitAdditionalApplicationDetailsResponseSubmitAdditionalApplicationDetailsResult> SubmitAdditionalApplicationDetailsAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.AdditionalApplicationDetails additionalApplicationDetails);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitAdditionalApplicationDetailsResponseSubmitAdditionalApplicationDetailsResult> SubmitAdditionalApplicationDetailsAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.AdditionalApplicationDetails additionalApplicationDetails);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChange", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChangeResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChangeDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChangeBusinessExceptionTypeFault", Name = "BusinessExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChangeEDBCExceptionTypeFault", Name = "EDBCExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChangeFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChangeFileClearenceExceptionTypeFault", Name = "FileClearenceExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -341,25 +380,26 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationChangeResponseSubmitApplicationChangeResult submitApplicationChange(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication Application);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationChangeResponseSubmitApplicationChangeResult submitApplicationChange(
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication Application, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication oldXML, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication newXML);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChange", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChangeResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationChangeResponseSubmitApplicationChangeResult> submitApplicationChangeAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication Application);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationChangeResponseSubmitApplicationChangeResult> submitApplicationChangeAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication Application, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication oldXML, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication newXML);
 
         //[System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
         //    "itApplicationChange", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
         //    "itApplicationChangeResponse")]
-        //[System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        //[System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
         //    "itApplicationChangeDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        //[System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        //[System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
         //    "itApplicationChangeBusinessExceptionTypeFault", Name = "BusinessExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        //[System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        //[System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
         //    "itApplicationChangeEDBCExceptionTypeFault", Name = "EDBCExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        //[System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        //[System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
         //    "itApplicationChangeFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        //[System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
+        //[System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
         //    "itApplicationChangeFileClearenceExceptionTypeFault", Name = "FileClearenceExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         //[System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         //[System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -408,19 +448,19 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
 
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationChangeAddressResponseSubmitApplicationChangeAddressResult submitApplicationChangeAddress(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication Application);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationChangeAddressResponseSubmitApplicationChangeAddressResult submitApplicationChangeAddress(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication Application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChangeAddress", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/subm" +
             "itApplicationChangeAddressResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationChangeAddressResponseSubmitApplicationChangeAddressResult> submitApplicationChangeAddressAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication Application);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationChangeAddressResponseSubmitApplicationChangeAddressResult> submitApplicationChangeAddressAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication Application);
 
 
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/dete" +
             "rmineEligibility", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/dete" +
             "rmineEligibilityResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/dete" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/dete" +
             "rmineEligibilityDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -438,17 +478,17 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.determineEligibilityResponseDetermineEligibilityResult determineEligibility(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.determineEligibilityApplication Application);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.determineEligibilityResponseDetermineEligibilityResult determineEligibility(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.determineEligibilityApplication Application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/dete" +
             "rmineEligibility", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/dete" +
             "rmineEligibilityResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.determineEligibilityResponseDetermineEligibilityResult> determineEligibilityAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.determineEligibilityApplication Application);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.determineEligibilityResponseDetermineEligibilityResult> determineEligibilityAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.determineEligibilityApplication Application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/addN" +
             "ewBorn", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/addN" +
             "ewBornResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/addN" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/addN" +
             "ewBornDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -466,12 +506,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.addNewBornResponseAddNewBornResult addNewBorn(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.addNewBornApplication application);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.addNewBornResponseAddNewBornResult addNewBorn(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.addNewBornApplication application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/addN" +
             "ewBorn", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/addN" +
             "ewBornResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.addNewBornResponseAddNewBornResult> addNewBornAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.addNewBornApplication application);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.addNewBornResponseAddNewBornResult> addNewBornAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.addNewBornApplication application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/upda" +
             "teAgency", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/upda" +
@@ -492,12 +532,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        bool updateAgency(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DCAgencyIndividualCaseAssociation agencyInput, string Operation);
+        bool updateAgency(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DCAgencyIndividualCaseAssociation agencyInput, string Operation);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/upda" +
             "teAgency", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/upda" +
             "teAgencyResponse")]
-        System.Threading.Tasks.Task<bool> updateAgencyAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DCAgencyIndividualCaseAssociation agencyInput, string Operation);
+        System.Threading.Tasks.Task<bool> updateAgencyAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DCAgencyIndividualCaseAssociation agencyInput, string Operation);
 
         // CODEGEN: Parameter 'taskAttributes' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlArrayItemAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/crea" +
@@ -519,12 +559,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskResponse createTask(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskRequest request);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskResponse createTask(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskRequest request);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/crea" +
             "teTask", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/crea" +
             "teTaskResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskResponse> createTaskAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskRequest request);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskResponse> createTaskAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskRequest request);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Upda" +
             "teTasks", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Upda" +
@@ -545,12 +585,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        bool UpdateTasks(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskModel tasks);
+        bool UpdateTasks(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskModel tasks);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Upda" +
             "teTasks", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Upda" +
             "teTasksResponse")]
-        System.Threading.Tasks.Task<bool> UpdateTasksAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskModel tasks);
+        System.Threading.Tasks.Task<bool> UpdateTasksAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskModel tasks);
 
         // CODEGEN: Parameter 'taskAttributes' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlArrayItemAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Crea" +
@@ -571,12 +611,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksResponse CreateTasks(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksRequest request);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksResponse CreateTasks(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksRequest request);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Crea" +
             "teTasks", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Crea" +
             "teTasksResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksResponse> CreateTasksAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksRequest request);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksResponse> CreateTasksAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksRequest request);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Calc" +
             "ulateMaxAPTC", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Calc" +
@@ -597,12 +637,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.MaxAPTCResponse[] CalculateMaxAPTC(int caseNumber, int coverageYear);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.MaxAPTCResponse[] CalculateMaxAPTC(int caseNumber, int coverageYear);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Calc" +
             "ulateMaxAPTC", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Calc" +
             "ulateMaxAPTCResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.MaxAPTCResponse[]> CalculateMaxAPTCAsync(int caseNumber, int coverageYear);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.MaxAPTCResponse[]> CalculateMaxAPTCAsync(int caseNumber, int coverageYear);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Calc" +
             "ulateMaxAPTCWithUserRole", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Calc" +
@@ -623,12 +663,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.MaxAPTCResponse[] CalculateMaxAPTCWithUserRole(int caseNumber, int coverageYear, string userRole);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.MaxAPTCResponse[] CalculateMaxAPTCWithUserRole(int caseNumber, int coverageYear, string userRole);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Calc" +
             "ulateMaxAPTCWithUserRole", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Calc" +
             "ulateMaxAPTCWithUserRoleResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.MaxAPTCResponse[]> CalculateMaxAPTCWithUserRoleAsync(int caseNumber, int coverageYear, string userRole);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.MaxAPTCResponse[]> CalculateMaxAPTCWithUserRoleAsync(int caseNumber, int coverageYear, string userRole);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Upda" +
             "teIndividualMCI", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Upda" +
@@ -727,12 +767,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        bool UpdateContactDetails(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Individual individualDetails, int caseNumber);
+        bool UpdateContactDetails(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Individual individualDetails, int caseNumber);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Upda" +
             "teContactDetails", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Upda" +
             "teContactDetailsResponse")]
-        System.Threading.Tasks.Task<bool> UpdateContactDetailsAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Individual individualDetails, int caseNumber);
+        System.Threading.Tasks.Task<bool> UpdateContactDetailsAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Individual individualDetails, int caseNumber);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itIndividualRelationships", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
@@ -753,12 +793,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitIndividualRelationshipsResponseSubmitIndividualRelationshipsResult SubmitIndividualRelationships(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.IndividualRelationships indivRelationships);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitIndividualRelationshipsResponseSubmitIndividualRelationshipsResult SubmitIndividualRelationships(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.IndividualRelationships indivRelationships);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itIndividualRelationships", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itIndividualRelationshipsResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitIndividualRelationshipsResponseSubmitIndividualRelationshipsResult> SubmitIndividualRelationshipsAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.IndividualRelationships indivRelationships);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitIndividualRelationshipsResponseSubmitIndividualRelationshipsResult> SubmitIndividualRelationshipsAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.IndividualRelationships indivRelationships);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/GetT" +
             "axFilerList", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/GetT" +
@@ -779,12 +819,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaxFilerModel[] GetTaxFilerList(int casenumber);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaxFilerModel[] GetTaxFilerList(int casenumber);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/GetT" +
             "axFilerList", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/GetT" +
             "axFilerListResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaxFilerModel[]> GetTaxFilerListAsync(int casenumber);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaxFilerModel[]> GetTaxFilerListAsync(int casenumber);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Popu" +
             "lateHouseholdComposition", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Popu" +
@@ -805,12 +845,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.HouseholdCompositionReturnModel PopulateHouseholdComposition(int casenumber);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.HouseholdCompositionReturnModel PopulateHouseholdComposition(int casenumber);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Popu" +
             "lateHouseholdComposition", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Popu" +
             "lateHouseholdCompositionResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.HouseholdCompositionReturnModel> PopulateHouseholdCompositionAsync(int casenumber);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.HouseholdCompositionReturnModel> PopulateHouseholdCompositionAsync(int casenumber);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/GetC" +
             "aseNumber", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/GetC" +
@@ -857,12 +897,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        bool InsertOrganizationCase(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DCAgencyIndividualCaseAssociation organizaionInput);
+        bool InsertOrganizationCase(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DCAgencyIndividualCaseAssociation organizaionInput);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Inse" +
             "rtOrganizationCase", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Inse" +
             "rtOrganizationCaseResponse")]
-        System.Threading.Tasks.Task<bool> InsertOrganizationCaseAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DCAgencyIndividualCaseAssociation organizaionInput);
+        System.Threading.Tasks.Task<bool> InsertOrganizationCaseAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DCAgencyIndividualCaseAssociation organizaionInput);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Save" +
             "APTCReview", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Save" +
@@ -893,15 +933,15 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPreCaseApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPreCaseApplicationResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPreCaseApplicationFileClearenceExceptionTypeFault", Name = "FileClearenceExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPreCaseApplicationBusinessExceptionTypeFault", Name = "BusinessExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPreCaseApplicationEDBCExceptionTypeFault", Name = "EDBCExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPreCaseApplicationFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPreCaseApplicationDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -918,25 +958,25 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPreCaseApplicationResponseSubmitPreCaseApplicationResult SubmitPreCaseApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application application);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPreCaseApplicationResponseSubmitPreCaseApplicationResult SubmitPreCaseApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPreCaseApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itPreCaseApplicationResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPreCaseApplicationResponseSubmitPreCaseApplicationResult> SubmitPreCaseApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application application);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPreCaseApplicationResponseSubmitPreCaseApplicationResult> SubmitPreCaseApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCApplicationResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.BusinessExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCApplicationBusinessExceptionTypeFault", Name = "BusinessExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.EDBCExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCApplicationEDBCExceptionTypeFault", Name = "EDBCExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FatalExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCApplicationFatalExceptionTypeFault", Name = "FatalExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.FileClearenceExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCApplicationFileClearenceExceptionTypeFault", Name = "FileClearenceExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
+        [System.ServiceModel.FaultContractAttribute(typeof(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DownTimeExceptionType), Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCApplicationDownTimeExceptionTypeFault", Name = "DownTimeExceptionType", Namespace = "http://schemas.datacontract.org/2004/07/")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults = true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DownTimeExceptionType))]
@@ -953,12 +993,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitDCApplicationResponseSubmitDCApplicationResult SubmitDCApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application application, int ProcessingID);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitDCApplicationResponseSubmitDCApplicationResult SubmitDCApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application application, int ProcessingID);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCApplication", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCApplicationResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitDCApplicationResponseSubmitDCApplicationResult> SubmitDCApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application application, int ProcessingID);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitDCApplicationResponseSubmitDCApplicationResult> SubmitDCApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application application, int ProcessingID);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCRepresentativeInfo", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
@@ -978,12 +1018,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(controlInfo))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(TaskAttributes[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(MaxAPTCResponse[]))]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitDCRepresentativeInfoResponseSubmitDCRepresentativeInfoResult SubmitDCRepresentativeInfo(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication application);
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitDCRepresentativeInfoResponseSubmitDCRepresentativeInfoResult SubmitDCRepresentativeInfo(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication application);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCRepresentativeInfo", ReplyAction = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd/ISSPDCIntegrationService/Subm" +
             "itDCRepresentativeInfoResponse")]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitDCRepresentativeInfoResponseSubmitDCRepresentativeInfoResult> SubmitDCRepresentativeInfoAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication application);
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitDCRepresentativeInfoResponseSubmitDCRepresentativeInfoResult> SubmitDCRepresentativeInfoAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication application);
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -4660,6 +4700,20 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [XmlElementAttribute(IsNullable = true, Order = 32)]
         public string COLanguageCode { get; set; }
 
+        protected System.Nullable<YesNoType> _HasOptInForSMSReminders;
+
+        [XmlElementAttribute(IsNullable = true, Order = 33)]
+        public System.Nullable<YesNoType> HasOptInForSMSReminders
+        {
+            get { return _HasOptInForSMSReminders; }
+            set
+            {
+                _HasOptInForSMSReminders = value;
+                HasOptInForSMSRemindersSpecified = true;
+            }
+        }
+        [XmlIgnoreAttribute]
+        public bool HasOptInForSMSRemindersSpecified { get; set; }
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -7850,6 +7904,7 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
 
         [XmlElementAttribute(IsNullable = true, Order = 11)]
         public string CitizenshipVerificationCode { get; set; }
+
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -8736,6 +8791,66 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         public string NationalityCode { get; set; }
 
     }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd")]
+    public partial class IndividualGenderIdentity : controlInfo
+    {
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public int? IndividualId { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public string TypeCode { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string IdentifierType { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd")]
+    public partial class TribalLandDetail : controlInfo
+    {
+        [System.Xml.Serialization.XmlElementAttribute(Order = 0)]
+        public int? IndividualId { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 1)]
+        public int TribalLandDetailId { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 2)]
+        public string IsAnyoneResidingOnTribalLand { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 3)]
+        public string HasIndianAllotmentNotTrustHeld { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 4)]
+        public string TribalLandCode { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 5)]
+        public string OtherTribalLandName { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 6)]
+        public string IndianAllotmentName { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 7)]
+        public DateTime? BeginDate { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 8)]
+        public DateTime? EndDate { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 9)]
+        public string VerificationCode { get; set; }
+
+        [System.Xml.Serialization.XmlElementAttribute(Order = 10)]
+        public int? DCTribalLandDetailId { get; set; }
+    }
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -9713,6 +9828,10 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         public DateTime? LastPayDate { get; set; }
         [XmlElementAttribute(IsNullable = true, Order = 20)]
         public DateTime? TemporaryLeaveDate { get; set; }
+        [XmlElementAttribute(IsNullable = true, Order = 21)]
+        public string IsTemporarilyOnLeaveDueToSickChild { get; set; }
+        [XmlElementAttribute(IsNullable = true, Order = 22)]
+        public int? ChildIndividualId { get; set; }
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -10294,6 +10413,10 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         public DateTime? ExpectedDateOfReturn { get; set; }
         [XmlElementAttribute(IsNullable = true, Order = 30)]
         public DateTime? TemporaryLeaveDate { get; set; }
+        [XmlElementAttribute(IsNullable = true, Order = 31)]
+        public string IsTemporarilyOnLeaveDueToSickChild { get; set; }
+        [XmlElementAttribute(IsNullable = true, Order = 32)]
+        public int? ChildIndividualId { get; set; }
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -10325,6 +10448,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         public bool IsUpdateSpecified { get; set; }
         [System.Xml.Serialization.XmlElementAttribute(IsNullable = true, Order = 3)]
         public string[] SelectedReasonCodes { get; set; }
+
+        [XmlElementAttribute(Order = 4)]
+        public System.Nullable<System.DateTime> CoverageStartDate { get; set; }
+
+        [XmlElementAttribute(Order = 5)]
+        public System.Nullable<System.DateTime> CoverageEndDate { get; set; }
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -11380,6 +11509,8 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         public System.Nullable<YesNoType> HasTrustAnnuity { get; set; }
         [XmlElementAttribute(IsNullable = true, Order = 65)]
         public System.Nullable<YesNoType> HasAckLTCPreScreen { get; set; }
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable = true, Order = 66)]
+        public string WasFulltimeArmedForcesOrNationalGuard { get; set; }
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -12151,6 +12282,36 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
 
         [XmlElement(IsNullable = true, Order = 119)]
         public string PreferredSuffix { get; set; }
+
+        [XmlElement(IsNullable = true, Order = 120)]
+        public string IsTransgender { get; set; }
+
+        [XmlElementAttribute("IndividualGenderIdentity", Order = 121)]
+        public IndividualGenderIdentity[] IndividualGenderIdentities { get; set; }
+
+        [XmlElementAttribute("TribalLandDetail", Order = 122)]
+        public TribalLandDetail[] TribalLandDetails { get; set; }
+
+        [XmlElementAttribute("IsLegalNameToBeUsed", Order = 123)]
+        public string IsLegalNameToBeUsed { get; set; }
+
+        [XmlIgnoreAttribute]
+        public bool SSNVerificationDateSpecified { get; set; }
+
+        protected System.Nullable<System.DateTime> _SSNVerificationDate;
+
+        [XmlElementAttribute(IsNullable = true, Order = 124)]
+        public System.Nullable<System.DateTime> SSNVerificationDate
+        {
+            get { return _SSNVerificationDate; }
+            set
+            {
+                _SSNVerificationDate = value;
+                SSNVerificationDateSpecified = true;
+            }
+        }
+        [XmlElement(IsNullable = true, Order = 125)]
+        public string WasLivingInAFGorUKR { get; set; }
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -12564,6 +12725,9 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         public int? IndividualContactInformationId { get; set; }
         [XmlElementAttribute(IsNullable = true, Order = 79)]
         public string IsLanguageInfoSameAsHoh { get; set; }
+
+        [XmlElementAttribute(IsNullable = true, Order = 80)]
+        public string HasAppropriateCareTakerInformation { get; set; }
 
 
     }
@@ -13376,6 +13540,32 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         [XmlElementAttribute(Order = 0)]
         public ResponseType Response { get; set; }
     }
+
+    [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
+    [SerializableAttribute]
+    [DebuggerStepThroughAttribute]
+    [DesignerCategoryAttribute("code")]
+
+
+    [XmlTypeAttribute(AnonymousType = true, Namespace = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd")]
+    public class submitApplicationForPrepopulatedDataResponseSubmitApplicationForPrepopulatedDataResult : object, System.ComponentModel.INotifyPropertyChanged
+    {
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null))
+            {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        [XmlElementAttribute(Order = 0)]
+        public ResponseType Response { get; set; }
+    }
+
+
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
     [DebuggerStepThroughAttribute]
@@ -14865,7 +15055,7 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
     public class ReRunApplicationResponse
     {
         [MessageBodyMemberAttribute(Namespace = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd", Order = 0)]
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationResponseReRunApplicationResult ReRunApplicationResult { get; set; }
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationResponseReRunApplicationResult ReRunApplicationResult { get; set; }
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -16389,6 +16579,34 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         public System.Nullable<System.DateTime> RaceEthnicityDate { get; set; }
         [XmlElement(IsNullable = true, Order = 118)]
         public System.Nullable<System.DateTime> LanguageCommunicationDate { get; set; }
+        [XmlElement(IsNullable = true, Order = 119)]
+        public string AreAdditionalCCHoursRequired { get; set; }
+        private string[] needForAdditionalCCHoursField;
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable = true, Order = 120)]
+        public string[] NeedForAdditionalCCHoursRequired
+        {
+            get
+            {
+                return this.needForAdditionalCCHoursField;
+            }
+            set
+            {
+                this.needForAdditionalCCHoursField = value;
+                this.RaisePropertyChanged("NeedForAdditionalCCHoursRequired");
+            }
+        }
+        [XmlElement(IsNullable = true, Order = 121)]
+        public string OtherReason { get; set; }
+        [XmlElement(IsNullable = true, Order = 122)]
+        public string IsRequestingFullTimeHours { get; set; }
+        [XmlElement(IsNullable = true, Order = 123)]
+        public string IsRequestingMoreThanFullTimeHours { get; set; }
+        [XmlElement(IsNullable = true, Order = 124)]
+        public string CurrentlyReceiving { get; set; }
+        [XmlElement(IsNullable = true, Order = 125)]
+        public string IsSourceMobile { get; set; }
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public int ApplicantUpdateDetailId { get; set; }
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -20526,11 +20744,11 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
     public class createTaskRequest
     {
         [MessageBodyMemberAttribute(Namespace = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd", Order = 0)]
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskModel task { get; set; }
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskModel task { get; set; }
 
         [MessageBodyMemberAttribute(Namespace = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd", Order = 1)]
         [XmlArrayItemAttribute(IsNullable = false)]
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskAttributes[] taskAttributes { get; set; }
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskAttributes[] taskAttributes { get; set; }
     }
     [DebuggerStepThroughAttribute]
     [GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -20548,14 +20766,14 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
     public class CreateTasksRequest
     {
         [MessageBodyMemberAttribute(Namespace = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd", Order = 0)]
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskModel task { get; set; }
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskModel task { get; set; }
 
         [MessageBodyMemberAttribute(Namespace = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd", Order = 1)]
         [XmlArrayItemAttribute(IsNullable = false)]
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskAttributes[] taskAttributes { get; set; }
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskAttributes[] taskAttributes { get; set; }
         [MessageBodyMemberAttribute(Namespace = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd", Order = 2)]
         [XmlArrayItemAttribute(IsNullable = false)]
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskPrimaryAttribute[] taskPrimaryAttributes { get; set; }
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskPrimaryAttribute[] taskPrimaryAttributes { get; set; }
     }
     [DebuggerStepThroughAttribute]
     [GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -20564,7 +20782,7 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
     public class CreateTasksResponse
     {
         [MessageBodyMemberAttribute(Namespace = "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd", Order = 0)]
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskResponseModel CreateTasksResult { get; set; }
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskResponseModel CreateTasksResult { get; set; }
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
     [SerializableAttribute]
@@ -22029,61 +22247,70 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
     }
     [DebuggerStepThroughAttribute]
     [GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public class SSPDCIntegrationServiceClient : System.ServiceModel.ClientBase<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService>, Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService
+    public class SSPDCIntegrationServiceClient : System.ServiceModel.ClientBase<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService>, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService
     {
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationResponseSubmitApplicationResult submitApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationResponseSubmitApplicationResult submitApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application)
         {
             return base.Channel.submitApplication(Application);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationResponseSubmitApplicationResult> submitApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationResponseSubmitApplicationResult> submitApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application)
         {
             return base.Channel.submitApplicationAsync(Application);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitSNAPShortApplicationResponseSubmitSNAPShortApplicationResult submitSNAPShortApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationForPrepopulatedDataResponseSubmitApplicationForPrepopulatedDataResult submitApplicationForPrepopulatedData(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application)
+        {
+            return base.Channel.submitApplicationForPrepopulatedData(Application);
+        }
+
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationForPrepopulatedDataResponseSubmitApplicationForPrepopulatedDataResult> submitApplicationForPrepopulatedDataAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application)
+        {
+            return base.Channel.submitApplicationForPrepopulatedDataAsync(Application);
+        }
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitSNAPShortApplicationResponseSubmitSNAPShortApplicationResult submitSNAPShortApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application)
         {
             return base.Channel.submitSNAPShortApplication(Application);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitSNAPShortApplicationResponseSubmitSNAPShortApplicationResult> submitSNAPShortApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitSNAPShortApplicationResponseSubmitSNAPShortApplicationResult> submitSNAPShortApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application)
         {
             return base.Channel.submitSNAPShortApplicationAsync(Application);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitDisasterSNAPApplicationResponseSubmitDisasterSNAPApplicationResult submitDisasterSNAPApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitDisasterSNAPApplicationResponseSubmitDisasterSNAPApplicationResult submitDisasterSNAPApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application)
         {
             return base.Channel.submitDisasterSNAPApplication(Application);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitDisasterSNAPApplicationResponseSubmitDisasterSNAPApplicationResult> submitDisasterSNAPApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application Application)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitDisasterSNAPApplicationResponseSubmitDisasterSNAPApplicationResult> submitDisasterSNAPApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application Application)
         {
             return base.Channel.submitDisasterSNAPApplicationAsync(Application);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationResponseReRunApplicationResult ReRunApplication(System.Nullable<int> applicationNumber, System.Nullable<int> caseNumber, System.Nullable<int> processingID, bool isFileClearanceRerun)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationResponseReRunApplicationResult ReRunApplication(System.Nullable<int> applicationNumber, System.Nullable<int> caseNumber, System.Nullable<int> processingID, bool isFileClearanceRerun)
         {
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationRequest inValue = new Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationRequest();
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationRequest inValue = new Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationRequest();
             inValue.applicationNumber = applicationNumber;
             inValue.caseNumber = caseNumber;
             inValue.processingID = processingID;
             inValue.isFileClearanceRerun = isFileClearanceRerun;
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationResponse retVal = ((Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService)(this)).ReRunApplication(inValue);
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationResponse retVal = ((Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService)(this)).ReRunApplication(inValue);
             return retVal.ReRunApplicationResult;
         }
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationResponse> Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService.ReRunApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationRequest request)
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationResponse> Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService.ReRunApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationRequest request)
         {
             return base.Channel.ReRunApplicationAsync(request);
         }
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationResponse> ReRunApplicationAsync(System.Nullable<int> applicationNumber, System.Nullable<int> caseNumber, System.Nullable<int> processingID, bool isFileClearanceRerun)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationResponse> ReRunApplicationAsync(System.Nullable<int> applicationNumber, System.Nullable<int> caseNumber, System.Nullable<int> processingID, bool isFileClearanceRerun)
         {
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationRequest inValue = new Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ReRunApplicationRequest();
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationRequest inValue = new Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ReRunApplicationRequest();
             inValue.applicationNumber = applicationNumber;
             inValue.caseNumber = caseNumber;
             inValue.processingID = processingID;
             inValue.isFileClearanceRerun = isFileClearanceRerun;
-            return ((Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService)(this)).ReRunApplicationAsync(inValue);
+            return ((Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService)(this)).ReRunApplicationAsync(inValue);
         }
 
         public bool removalOfMAAssisstance(int individualId, int caseNumber)
@@ -22096,153 +22323,153 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
             return base.Channel.removalOfMAAssisstanceAsync(individualId, caseNumber);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPEResponseSubmitPEResult SubmitPE(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPEApplication Application)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPEResponseSubmitPEResult SubmitPE(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPEApplication Application)
         {
             return base.Channel.SubmitPE(Application);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPEResponseSubmitPEResult> SubmitPEAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPEApplication Application)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPEResponseSubmitPEResult> SubmitPEAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPEApplication Application)
         {
             return base.Channel.SubmitPEAsync(Application);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitAdditionalApplicationDetailsResponseSubmitAdditionalApplicationDetailsResult SubmitAdditionalApplicationDetails(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.AdditionalApplicationDetails additionalApplicationDetails)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitAdditionalApplicationDetailsResponseSubmitAdditionalApplicationDetailsResult SubmitAdditionalApplicationDetails(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.AdditionalApplicationDetails additionalApplicationDetails)
         {
             return base.Channel.SubmitAdditionalApplicationDetails(additionalApplicationDetails);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitAdditionalApplicationDetailsResponseSubmitAdditionalApplicationDetailsResult> SubmitAdditionalApplicationDetailsAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.AdditionalApplicationDetails additionalApplicationDetails)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitAdditionalApplicationDetailsResponseSubmitAdditionalApplicationDetailsResult> SubmitAdditionalApplicationDetailsAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.AdditionalApplicationDetails additionalApplicationDetails)
         {
             return base.Channel.SubmitAdditionalApplicationDetailsAsync(additionalApplicationDetails);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationChangeResponseSubmitApplicationChangeResult submitApplicationChange(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication Application)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationChangeResponseSubmitApplicationChangeResult submitApplicationChange(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication Application, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication oldXML, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication newXML)
         {
-            return base.Channel.submitApplicationChange(Application);
+            return base.Channel.submitApplicationChange(Application, oldXML, newXML);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationChangeResponseSubmitApplicationChangeResult> submitApplicationChangeAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication Application)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationChangeResponseSubmitApplicationChangeResult> submitApplicationChangeAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication Application, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication oldXML, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication newXML)
         {
-            return base.Channel.submitApplicationChangeAsync(Application);
+            return base.Channel.submitApplicationChangeAsync(Application, oldXML, newXML);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationChangeAddressResponseSubmitApplicationChangeAddressResult submitApplicationChangeAddress(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication Application)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationChangeAddressResponseSubmitApplicationChangeAddressResult submitApplicationChangeAddress(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication Application)
         {
             return base.Channel.submitApplicationChangeAddress(Application);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.submitApplicationChangeAddressResponseSubmitApplicationChangeAddressResult> submitApplicationChangeAddressAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication Application)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.submitApplicationChangeAddressResponseSubmitApplicationChangeAddressResult> submitApplicationChangeAddressAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication Application)
         {
             return base.Channel.submitApplicationChangeAddressAsync(Application);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.determineEligibilityResponseDetermineEligibilityResult determineEligibility(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.determineEligibilityApplication Application)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.determineEligibilityResponseDetermineEligibilityResult determineEligibility(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.determineEligibilityApplication Application)
         {
             return base.Channel.determineEligibility(Application);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.determineEligibilityResponseDetermineEligibilityResult> determineEligibilityAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.determineEligibilityApplication Application)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.determineEligibilityResponseDetermineEligibilityResult> determineEligibilityAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.determineEligibilityApplication Application)
         {
             return base.Channel.determineEligibilityAsync(Application);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.addNewBornResponseAddNewBornResult addNewBorn(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.addNewBornApplication application)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.addNewBornResponseAddNewBornResult addNewBorn(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.addNewBornApplication application)
         {
             return base.Channel.addNewBorn(application);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.addNewBornResponseAddNewBornResult> addNewBornAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.addNewBornApplication application)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.addNewBornResponseAddNewBornResult> addNewBornAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.addNewBornApplication application)
         {
             return base.Channel.addNewBornAsync(application);
         }
 
-        public bool updateAgency(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DCAgencyIndividualCaseAssociation agencyInput, string Operation)
+        public bool updateAgency(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DCAgencyIndividualCaseAssociation agencyInput, string Operation)
         {
             return base.Channel.updateAgency(agencyInput, Operation);
         }
 
-        public System.Threading.Tasks.Task<bool> updateAgencyAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DCAgencyIndividualCaseAssociation agencyInput, string Operation)
+        public System.Threading.Tasks.Task<bool> updateAgencyAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DCAgencyIndividualCaseAssociation agencyInput, string Operation)
         {
             return base.Channel.updateAgencyAsync(agencyInput, Operation);
         }
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskResponse Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService.createTask(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskRequest request)
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskResponse Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService.createTask(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskRequest request)
         {
             return base.Channel.createTask(request);
         }
-        public int createTask(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskModel task, Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskAttributes[] taskAttributes)
+        public int createTask(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskModel task, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskAttributes[] taskAttributes)
         {
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskRequest inValue = new Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskRequest();
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskRequest inValue = new Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskRequest();
             inValue.task = task;
             inValue.taskAttributes = taskAttributes;
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskResponse retVal = ((Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService)(this)).createTask(inValue);
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskResponse retVal = ((Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService)(this)).createTask(inValue);
             return retVal.createTaskResult;
         }
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskResponse> Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService.createTaskAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskRequest request)
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskResponse> Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService.createTaskAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskRequest request)
         {
             return base.Channel.createTaskAsync(request);
         }
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskResponse> createTaskAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskModel task, Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskAttributes[] taskAttributes)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskResponse> createTaskAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskModel task, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskAttributes[] taskAttributes)
         {
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskRequest inValue = new Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.createTaskRequest();
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskRequest inValue = new Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.createTaskRequest();
             inValue.task = task;
             inValue.taskAttributes = taskAttributes;
-            return ((Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService)(this)).createTaskAsync(inValue);
+            return ((Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService)(this)).createTaskAsync(inValue);
         }
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksResponse Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService.CreateTasks(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksRequest request)
+        Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksResponse Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService.CreateTasks(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksRequest request)
         {
             return base.Channel.CreateTasks(request);
         }
-        public bool UpdateTasks(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskModel tasks)
+        public bool UpdateTasks(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskModel tasks)
         {
             return base.Channel.UpdateTasks(tasks);
         }
 
-        public System.Threading.Tasks.Task<bool> UpdateTasksAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskModel tasks)
+        public System.Threading.Tasks.Task<bool> UpdateTasksAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskModel tasks)
         {
             return base.Channel.UpdateTasksAsync(tasks);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskResponseModel CreateTasks(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskModel task, Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskAttributes[] taskAttributes, Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskPrimaryAttribute[] taskPrimaryAttributes)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskResponseModel CreateTasks(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskModel task, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskAttributes[] taskAttributes, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskPrimaryAttribute[] taskPrimaryAttributes)
         {
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksRequest inValue = new Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksRequest();
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksRequest inValue = new Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksRequest();
             inValue.task = task;
             inValue.taskAttributes = taskAttributes;
             inValue.taskPrimaryAttributes = taskPrimaryAttributes;
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksResponse retVal = ((Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService)(this)).CreateTasks(inValue);
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksResponse retVal = ((Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService)(this)).CreateTasks(inValue);
             return retVal.CreateTasksResult;
         }
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksResponse> Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService.CreateTasksAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksRequest request)
+        System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksResponse> Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService.CreateTasksAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksRequest request)
         {
             return base.Channel.CreateTasksAsync(request);
         }
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksResponse> CreateTasksAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskModel task, Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaskAttributes[] taskAttributes)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksResponse> CreateTasksAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskModel task, Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaskAttributes[] taskAttributes)
         {
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksRequest inValue = new Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.CreateTasksRequest();
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksRequest inValue = new Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.CreateTasksRequest();
             inValue.task = task;
             inValue.taskAttributes = taskAttributes;
-            return ((Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ISSPDCIntegrationService)(this)).CreateTasksAsync(inValue);
+            return ((Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ISSPDCIntegrationService)(this)).CreateTasksAsync(inValue);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.MaxAPTCResponse[] CalculateMaxAPTC(int caseNumber, int coverageYear)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.MaxAPTCResponse[] CalculateMaxAPTC(int caseNumber, int coverageYear)
         {
             return base.Channel.CalculateMaxAPTC(caseNumber, coverageYear);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.MaxAPTCResponse[]> CalculateMaxAPTCAsync(int caseNumber, int coverageYear)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.MaxAPTCResponse[]> CalculateMaxAPTCAsync(int caseNumber, int coverageYear)
         {
             return base.Channel.CalculateMaxAPTCAsync(caseNumber, coverageYear);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.MaxAPTCResponse[] CalculateMaxAPTCWithUserRole(int caseNumber, int coverageYear, string userRole)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.MaxAPTCResponse[] CalculateMaxAPTCWithUserRole(int caseNumber, int coverageYear, string userRole)
         {
             return base.Channel.CalculateMaxAPTCWithUserRole(caseNumber, coverageYear, userRole);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.MaxAPTCResponse[]> CalculateMaxAPTCWithUserRoleAsync(int caseNumber, int coverageYear, string userRole)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.MaxAPTCResponse[]> CalculateMaxAPTCWithUserRoleAsync(int caseNumber, int coverageYear, string userRole)
         {
             return base.Channel.CalculateMaxAPTCWithUserRoleAsync(caseNumber, coverageYear, userRole);
         }
@@ -22277,12 +22504,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
             return base.Channel.GeteDownTimeStatusAsync();
         }
 
-        public bool UpdateContactDetails(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Individual individualDetails, int caseNumber)
+        public bool UpdateContactDetails(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Individual individualDetails, int caseNumber)
         {
             return base.Channel.UpdateContactDetails(individualDetails, caseNumber);
         }
 
-        public System.Threading.Tasks.Task<bool> UpdateContactDetailsAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Individual individualDetails, int caseNumber)
+        public System.Threading.Tasks.Task<bool> UpdateContactDetailsAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Individual individualDetails, int caseNumber)
         {
             return base.Channel.UpdateContactDetailsAsync(individualDetails, caseNumber);
         }
@@ -22302,29 +22529,29 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         {
             return base.Channel.createTaskAsync(request);
         }
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitIndividualRelationshipsResponseSubmitIndividualRelationshipsResult SubmitIndividualRelationships(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.IndividualRelationships indivRelationships)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitIndividualRelationshipsResponseSubmitIndividualRelationshipsResult SubmitIndividualRelationships(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.IndividualRelationships indivRelationships)
         {
             return base.Channel.SubmitIndividualRelationships(indivRelationships);
         }
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitIndividualRelationshipsResponseSubmitIndividualRelationshipsResult> SubmitIndividualRelationshipsAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.IndividualRelationships indivRelationships)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitIndividualRelationshipsResponseSubmitIndividualRelationshipsResult> SubmitIndividualRelationshipsAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.IndividualRelationships indivRelationships)
         {
             return base.Channel.SubmitIndividualRelationshipsAsync(indivRelationships);
         }
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaxFilerModel[] GetTaxFilerList(int casenumber)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaxFilerModel[] GetTaxFilerList(int casenumber)
         {
             return base.Channel.GetTaxFilerList(casenumber);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.TaxFilerModel[]> GetTaxFilerListAsync(int casenumber)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.TaxFilerModel[]> GetTaxFilerListAsync(int casenumber)
         {
             return base.Channel.GetTaxFilerListAsync(casenumber);
         }
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.HouseholdCompositionReturnModel PopulateHouseholdComposition(int casenumber)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.HouseholdCompositionReturnModel PopulateHouseholdComposition(int casenumber)
         {
             return base.Channel.PopulateHouseholdComposition(casenumber);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.HouseholdCompositionReturnModel> PopulateHouseholdCompositionAsync(int casenumber)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.HouseholdCompositionReturnModel> PopulateHouseholdCompositionAsync(int casenumber)
         {
             return base.Channel.PopulateHouseholdCompositionAsync(casenumber);
         }
@@ -22337,12 +22564,12 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         {
             return base.Channel.GetCaseNumberAsync(IndividualId);
         }
-        public bool InsertOrganizationCase(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DCAgencyIndividualCaseAssociation organizaionInput)
+        public bool InsertOrganizationCase(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DCAgencyIndividualCaseAssociation organizaionInput)
         {
             return base.Channel.InsertOrganizationCase(organizaionInput);
         }
 
-        public System.Threading.Tasks.Task<bool> InsertOrganizationCaseAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.DCAgencyIndividualCaseAssociation organizaionInput)
+        public System.Threading.Tasks.Task<bool> InsertOrganizationCaseAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.DCAgencyIndividualCaseAssociation organizaionInput)
         {
             return base.Channel.InsertOrganizationCaseAsync(organizaionInput);
         }
@@ -22355,31 +22582,31 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
         {
             return base.Channel.SaveAPTCReviewAsync(CaseNumber, UserRole, IsReviewSelected, SpecializedFlag);
         }
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPreCaseApplicationResponseSubmitPreCaseApplicationResult SubmitPreCaseApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application application)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPreCaseApplicationResponseSubmitPreCaseApplicationResult SubmitPreCaseApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application application)
         {
             return base.Channel.SubmitPreCaseApplication(application);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitPreCaseApplicationResponseSubmitPreCaseApplicationResult> SubmitPreCaseApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application application)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitPreCaseApplicationResponseSubmitPreCaseApplicationResult> SubmitPreCaseApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application application)
         {
             return base.Channel.SubmitPreCaseApplicationAsync(application);
         }
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitDCApplicationResponseSubmitDCApplicationResult SubmitDCApplication(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application application, int ProcessingID)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitDCApplicationResponseSubmitDCApplicationResult SubmitDCApplication(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application application, int ProcessingID)
         {
             return base.Channel.SubmitDCApplication(application, ProcessingID);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitDCApplicationResponseSubmitDCApplicationResult> SubmitDCApplicationAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application application, int ProcessingID)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitDCApplicationResponseSubmitDCApplicationResult> SubmitDCApplicationAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application application, int ProcessingID)
         {
             return base.Channel.SubmitDCApplicationAsync(application, ProcessingID);
         }
 
-        public Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitDCRepresentativeInfoResponseSubmitDCRepresentativeInfoResult SubmitDCRepresentativeInfo(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication application)
+        public Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitDCRepresentativeInfoResponseSubmitDCRepresentativeInfoResult SubmitDCRepresentativeInfo(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication application)
         {
             return base.Channel.SubmitDCRepresentativeInfo(application);
         }
 
-        public System.Threading.Tasks.Task<Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.SubmitDCRepresentativeInfoResponseSubmitDCRepresentativeInfoResult> SubmitDCRepresentativeInfoAsync(Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.ChangeApplication application)
+        public System.Threading.Tasks.Task<Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.SubmitDCRepresentativeInfoResponseSubmitDCRepresentativeInfoResult> SubmitDCRepresentativeInfoAsync(Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.ChangeApplication application)
         {
             return base.Channel.SubmitDCRepresentativeInfoAsync(application);
         }
@@ -23619,6 +23846,10 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
 
         [XmlElement(IsNullable = true, Order = 67)]
         public string HasAnyBenefitDueToDisability { get; set; }
+        [XmlElementAttribute(IsNullable = true, Order = 68)]
+        public string IsTemporarilyOnLeaveDueToSickChild { get; set; }
+        [XmlElementAttribute(IsNullable = true, Order = 69)]
+        public int? ChildIndividualId { get; set; }
 
     }
     [GeneratedCodeAttribute("System.Xml", "4.0.30319.34230")]
@@ -23851,4 +24082,6 @@ namespace Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC
 
         #endregion
     }
+
 }
+

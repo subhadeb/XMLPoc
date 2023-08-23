@@ -1,10 +1,13 @@
-﻿using Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC;
+﻿using Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace XMLPoc
@@ -160,7 +163,7 @@ namespace XMLPoc
             {
 
                 var value = pinfo.GetValue(obj, null);
-
+                
 
                 //Properties ending with Specified can be ignored as these are not used in Applicant Portal.
                 if (pinfo.Name.EndsWith("Specified"))
@@ -342,11 +345,47 @@ namespace XMLPoc
                 }
             }
 
+            //### ParentClass is not blank but IndividualId is blank, Identifiers are not blank. These will be case level data
+            var addedItemIdNew = new List<int>();
+            var caseLevelFieldsWithParentAndIdentifierOrig = originalXMLValues.Where(x => !string.IsNullOrEmpty(x.ParentClass)
+            && string.IsNullOrEmpty(x.IndividualId) && !string.IsNullOrEmpty(x.IdentifierName) && !string.IsNullOrEmpty(x.IdentifierId)).ToList();
+            var caseLevelFieldsWithParentAndIdentifierNew = newXMLValues.Where(x => !string.IsNullOrEmpty(x.ParentClass)
+            && string.IsNullOrEmpty(x.IndividualId) && !string.IsNullOrEmpty(x.IdentifierName) && !string.IsNullOrEmpty(x.IdentifierId)).ToList();
+            foreach (var objOrig in caseLevelFieldsWithParentAndIdentifierOrig)
+            {
+                comparedItemidsOrig.Add(objOrig.ItemId);
+                foreach (var objNew in caseLevelFieldsWithParentAndIdentifierNew)
+                {
+                    if (!comparedItemidsNew.Contains(objNew.ItemId))
+                    {
+                        comparedItemidsNew.Add(objNew.ItemId);
+                    }
+
+                    if (objOrig.Name == objNew.Name && objOrig.ParentClass == objNew.ParentClass
+                        && objOrig.IdentifierName == objNew.IdentifierName
+                        && objOrig.IdentifierId == objNew.IdentifierId
+                        && objOrig.Value != objNew.Value)
+                    {
+                        variances.Add(PopulateVarianceMixed(objOrig, objNew));
+                    }
+                    //If There is a new entry for this ParentClass/IdentifierName/IdentifierId combination
+                    if (!caseLevelFieldsWithParentAndIdentifierOrig.Any(x=>x.ParentClass== objNew.ParentClass && x.IdentifierName==objNew.IdentifierName
+                    && x.IdentifierId == objNew.IdentifierId) && !addedItemIdNew.Contains(objNew.ItemId))
+                    {
+                        addedItemIdNew.Add(objNew.ItemId);
+                        variances.Add(PopulateVarianceNew(objNew));
+                    }
+                }
+                
+            }
+
+
+
             //### ParentClass is not blank but IndividualId is blank. These will be case level data
             var caseLevelFieldsWithParentOrig = originalXMLValues.Where(x => !string.IsNullOrEmpty(x.ParentClass)
-            && string.IsNullOrEmpty(x.IndividualId)).ToList();
+            && string.IsNullOrEmpty(x.IndividualId) && !comparedItemidsOrig.Contains(x.ItemId)).ToList();
             var caseLevelFieldsWithParentNew = newXMLValues.Where(x => !string.IsNullOrEmpty(x.ParentClass)
-            && string.IsNullOrEmpty(x.IndividualId)).ToList();
+            && string.IsNullOrEmpty(x.IndividualId) && !comparedItemidsNew.Contains(x.ItemId)).ToList();
 
             foreach (var objOrig in caseLevelFieldsWithParentOrig)
             {
@@ -508,10 +547,11 @@ namespace XMLPoc
             && x.IndividualId != null && !string.IsNullOrEmpty(x.IdentifierId) && x.IdentifierId != "0" && !comparedItemidsNew.Contains(x.ItemId)).ToList();
 
 
-
+            addedItemIdNew = new List<int>();//Resetting
             foreach (var objOrig in nonIndivIdentifiersFieldsUpdatedOrig)
             {
                 comparedItemidsOrig.Add(objOrig.ItemId);
+                
                 foreach (var objNew in nonIndivIdentifiersFieldsUpdatedNew)
                 {
                     if (!comparedItemidsNew.Contains(objNew.ItemId))
@@ -528,6 +568,16 @@ namespace XMLPoc
                         {
                             variances.Add(PopulateVarianceMixed(objOrig, objNew));
                         }
+                    }
+
+                    //If There is a new entry for this Name/ParentClass/IdentifierName/IdentifierId combination
+                    
+                    if (!nonIndivIdentifiersFieldsUpdatedOrig.Any(x => x.ParentClass == objNew.ParentClass && x.IdentifierName == objNew.IdentifierName
+                    && x.IndividualId == objNew.IndividualId
+                    && x.IdentifierId == objNew.IdentifierId && x.Name == objNew.Name) && !addedItemIdNew.Contains(objNew.ItemId))
+                    {
+                        addedItemIdNew.Add(objNew.ItemId);
+                        variances.Add(PopulateVarianceNew(objNew));
                     }
                 }
             }

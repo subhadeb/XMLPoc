@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC;
+using Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient;
 using System.Net;
 using System.Text;
 using System.Xml;
@@ -32,17 +32,17 @@ namespace XMLPoc
         public void POC()
         {
 
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application app = new Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application();
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application app = new Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application();
 
         }
         public string GetApplicantUpdates()
         {
 
-            var OlxXMLFileName = @"C:\SDEB_code\poc\SSPReqMarkingBlind1_Old.xml";
-            var NewXMLFileName = @"C:\SDEB_code\poc\SSPReqMarkingBlind2_New.xml";
+            var OlxXMLFileName = @"C:\SDEB_code\poc\SSPReq_GeethaDetailid8_1.xml";
+            var NewXMLFileName = @"C:\SDEB_code\poc\SSPReq_GeethaDetailid8_2.Xml";
 
 
-            Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC.Application app = new Application();
+            Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application app = new Application();
             var fileStream = new FileStream(OlxXMLFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             string fileContents;
             using (StreamReader reader = new StreamReader(fileStream))

@@ -1,5 +1,5 @@
 ﻿
-using Ky.Hbe.WorkerPortal.SharedServices.Contracts.Models.SSPDC;
+using Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
