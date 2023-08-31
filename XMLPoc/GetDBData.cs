@@ -85,9 +85,9 @@ namespace XMLPoc
                     foreach (DataRow row in dataSet.Tables[0].Rows)
                     {
                         APClassIdentier record = new APClassIdentier();
-                        record.ParentClass = row[0].ToString();
-                        record.IdentifierName = row[1].ToString();
-                        record.MiscIdentifier = row[2].ToString();
+                        record.ClassName = row[0].ToString();
+                        record.ClassIdentifier = row[1].ToString();
+                        record.MiscellaneousIdentifier = row[2].ToString();
 
                         aPClassIdentiersList.Add(record);
                     }
@@ -110,10 +110,15 @@ namespace XMLPoc
 
     public class APClassIdentier
     {
-        public string ParentClass { get; set; }
-        public string IdentifierName { get; set; }
+        public string ClassName { get; set; }
+        public string ClassIdentifier { get; set; }
 
-        public string MiscIdentifier { get; set; }
+        public string MiscellaneousIdentifier { get; set; }
     }
-
+    public class APDynamicKeyValue
+    {
+        public string Category { get; set; }
+        public int? FieldId { get; set; }
+        public Dictionary<string, string> KeyValuePairs { get; set; }
+    }
 }
