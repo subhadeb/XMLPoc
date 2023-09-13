@@ -15,6 +15,8 @@ namespace XMLPoc
         public Dictionary<string,string> KeyValuePairs { get; set; }
     }
 
+   
+
     class Program
     {
         public static void Main(string[] args)
@@ -22,23 +24,22 @@ namespace XMLPoc
             Console.WriteLine("Test!");
 
 
-
-            double tempResult;
-            var str = "123";
-            var result = double.TryParse(str, out tempResult) ? (double?)tempResult : null;
-            Console.WriteLine(result);
-
-
+            var str = "Dynamic-CSharp-AdditionalLogic|DisplayFilter:True,DisplayFilterLogic:ValueNotEqual,ValueSCSV:0";
 
             //SerializeDemo();
             Program p = new Program();
-           //var abc = p.GetAPDynamicKeyValue("Dynamic-CSharp-Variance|ParentClass:ApplicationIndividual.DisabilityInformation,FieldName:IsDisabled,FieldCode:FLD_RREP,Logic:YesIfAnyValueExist",3);
+            //var abc = p.GetAPDynamicKeyValue("Dynamic-CSharp-Variance|ParentClass:ApplicationIndividual.DisabilityInformation,FieldName:IsDisabled,FieldCode:FLD_RREP,Logic:YesIfAnyValueExist",3);
+
+
+            var kv = p.GetAPDynamicKeyValue(str);
 
             //p.POC();
             p.GetApplicantUpdates();
 
 
             //POCStackOverflow21091452.Invoke();
+
+
 
         }
       
@@ -49,6 +50,41 @@ namespace XMLPoc
             Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application app = new Ky.Hbe.IntegrationServices.SelfService.Contracts.SSPDCClient.Application();
 
         }
+
+        public APDynamicKeyValue GetAPDynamicKeyValue(string inputString, int? fieldId = null)
+        {
+            //Dynamic-CSharp-Variance|ParentClass:ApplicationIndividual.OutOfStateBenefits,FieldName:BenefitProgram,FieldCode:FLD_BPTD
+
+            APDynamicKeyValue kv = new APDynamicKeyValue();
+            kv.KeyValuePairs = new Dictionary<string, string>();
+            kv.FieldId = fieldId;
+            if (inputString.Contains("|"))
+            {
+                var splitTop = inputString.Split('|').ToArray();
+                if (splitTop.Length > 0)
+                {
+                    kv.Category = splitTop[0];
+                    if (splitTop[1].Contains(":"))
+                    {
+                        var allkeyValues = splitTop[1].Split(',').ToArray();
+                        for (int i = 0; i < allkeyValues.Length; i++)
+                        {
+                            var keyValueSingle = allkeyValues[i];
+                            if (keyValueSingle.Contains(":"))
+                            {
+                                var keyValueSingleArr = keyValueSingle.Split(':').ToArray();
+
+                                if (keyValueSingleArr.Length > 1 && !kv.KeyValuePairs.ContainsKey(keyValueSingleArr[0]))
+                                {
+                                    kv.KeyValuePairs.Add(keyValueSingleArr[0], keyValueSingleArr[1]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return kv;
+        }
         public string GetApplicantUpdates()
         {
 
@@ -58,8 +94,13 @@ namespace XMLPoc
             //var OlxXMLFileName = @"C:\SDEB_code\poc\temReqDebug1_Old.xml";
             //var NewXMLFileName = @"C:\SDEB_code\poc\temReqDebug2_New.Xml";
 
-            var OlxXMLFileName = @"C:\SDEB_code\poc\temReqDebug1_Old.xml";
-            var NewXMLFileName = @"C:\SDEB_code\poc\temReqDebug2_New.Xml";
+
+            //var OlxXMLFileName = @"C:\SDEB_code\poc\abc123_1.xml";
+            //var NewXMLFileName = @"C:\SDEB_code\poc\abc123_2.Xml";
+
+
+            var OlxXMLFileName = @"C:\SDEB_code\poc\DetailidDev_637Old.xml";
+            var NewXMLFileName = @"C:\SDEB_code\poc\DetailidDev_637New.xml";
 
 
 
@@ -79,8 +120,19 @@ namespace XMLPoc
             {
                 fileContents2 = reader2.ReadToEnd();
             }
+
+            fileContents2 = fileContents2.Replace("<AccountTransferInformation xsi:nil=\"true\" />", "");
+
+           
+            StringBuilder sb = new StringBuilder(fileContents2);
+
+
+
             var serializeApplication2 = new SerializeDeserialize<Application>();
-            var deserialiedApplicationNew = serializeApplication.DeserializeDataByXMLPath(fileContents2, NewXMLFileName, "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd");
+            //var deserialiedApplicationNew = serializeApplication.DeserializeDataByXMLPath(sb.ToString(), NewXMLFileName, "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd");
+
+
+            var deserialiedApplicationNew = serializeApplication.DeserializeData(fileContents2, "http://hbe.ky.gov/xsd/INT_PUSH_AR_APPL_REG_V1.0.xsd");
 
             TrackApplicantUpdates trackApplicantUpdates = new TrackApplicantUpdates();
 

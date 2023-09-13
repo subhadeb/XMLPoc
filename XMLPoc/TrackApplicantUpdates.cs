@@ -479,6 +479,7 @@ namespace XMLPoc
             && string.IsNullOrEmpty(x.IndividualId) && !comparedItemidsOrig.Contains(x.ItemId)).ToList();
             var caseLevelFieldsWithParentNew = newXMLValues.Where(x => !string.IsNullOrEmpty(x.ParentClass)
             && string.IsNullOrEmpty(x.IndividualId) && !comparedItemidsNew.Contains(x.ItemId)).ToList();
+            addedItemIdNew = new List<int>();
 
             foreach (var objOrig in caseLevelFieldsWithParentOrig)
             {
@@ -495,7 +496,15 @@ namespace XMLPoc
                     {
                         variances.Add(PopulateVarianceMixed(objOrig, objNew));
                     }
+                    //If There is a new entry for this ParentClass/Name
+                    if (!caseLevelFieldsWithParentOrig.Any(x => x.ParentClass == objNew.ParentClass && 
+                    objNew.Name == x.Name) && !addedItemIdNew.Contains(objNew.ItemId))
+                    {
+                        addedItemIdNew.Add(objNew.ItemId);
+                        variances.Add(PopulateVarianceNew(objNew));
+                    }
                 }
+                
             }
 
 

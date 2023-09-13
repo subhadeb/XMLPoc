@@ -29,7 +29,7 @@ namespace XMLPoc
             employeeSerializer.Serialize(swWriter, data);
             return sbData.ToString();
         }
-        public T DeserializeData(string dataXML, string xmlPath, string xmlnamespace = "")
+        public T DeserializeData(string dataXML, string xmlnamespace = "")
         {
             xDoc = new XmlDocument();
             xDoc.LoadXml(dataXML);
